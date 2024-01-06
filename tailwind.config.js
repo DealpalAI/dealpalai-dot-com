@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
+        sans: ['Lato', 'Roboto', 'sans-serif'],
       },
       // Enable backdrop-filter utility
       backdropFilter: {

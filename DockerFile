@@ -1,11 +1,14 @@
-FROM node:18-alpine
+# Usa l'immagine base di Nginx
+FROM nginx:alpine
 
-WORKDIR /app
+# Rimuovi i file di configurazione di default di Nginx
+RUN rm /etc/nginx/conf.d/default.conf
 
-COPY package.json ./
+# Copia i file statici nel container, dentro la directory di Nginx per i contenuti statici
+COPY ./public /usr/share/nginx/html
 
-RUN npm install
+# Esporre la porta 80
+EXPOSE 80
 
-COPY . .
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
+# Avvia Nginx e mantienilo in esecuzione in foreground
+CMD ["nginx", "-g", "daemon off;"]
